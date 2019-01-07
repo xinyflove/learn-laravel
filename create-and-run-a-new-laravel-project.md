@@ -13,7 +13,7 @@
 安装 Laravel 安装器很简单，在命令行执行以下命令即可（如果已经安装过，会自动进行更新）：
 
 ```bash
-composer global require laravel/installer 
+composer global require laravel/installer
 ```
 
 安装完成后，后续就可以通过`laravel new [项目名称]`来创建新的 Laravel 项目了：
@@ -62,9 +62,9 @@ app：存放应用核心代码，如模型、控制器、命令、服务等
 
 ### 文件
 
-* `.env.example`/`.env`：用于配置环境变量，`.env.example` 是一个示例模板，而` .env` 是真正的配置文件，由于包含敏感信息，通常也将其放到 `.gitignore` 文件中。
+* `.env.example`/`.env`：用于配置环境变量，`.env.example` 是一个示例模板，而`.env` 是真正的配置文件，由于包含敏感信息，通常也将其放到 `.gitignore` 文件中。
 * `artisan`：允许你在项目根目录下通过 `php artisan` 执行 Artisan 命令
-* `.gitignore` 和` .gitattributes`：Git 配置文件
+* `.gitignore` 和`.gitattributes`：Git 配置文件
 * `composer.json` 和 `composer.lock`：Composer 配置文件
 * `webpack.mix.js`：Laravel Mix Webpack 配置文件，用于编译和打包前端资源
 * `package.json`：配置前端资源依赖和脚本（类似于 `composer.json` 之于 PHP）
@@ -79,7 +79,34 @@ app：存放应用核心代码，如模型、控制器、命令、服务等
 
 Laravel 应用的一些核心配置，比如数据库、队列、邮件等，都位于`config`目录下，通过配置文件名称就可以很直观地甄别出不同的服务配置。这些配置文件都会返回一个数组，数组中的每个值都可以通过配置键获取（配置键以配置文件名为前缀，以「.」号分隔数组层级），例如，如果你在`config/services.php`中定义了如下配置：
 
+```php
+// config/services.php 
+return [
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
+    ],
+];
+```
 
+然后，你就可以通过`config('services.sparkpost.secret')`来访问配置值。
+
+如上例所示，所有的因环境而异的变量配置值（尤其是敏感信息）都应该存放到根目录下的`.env`环境变量文件中：
+
+```
+SPARKPOST_SECRET = xyj_laravelacademy.org
+```
+
+然后在配置文件中通过`env()`辅助函数传入键名`SPARKPOST_SECRET`来获取，这样做有两个好处：一是将敏感信息存放到版本控制系统（如 Git、Svn）之外，提高了系统的安全性；此外还可以方便我们在不同环境中（每个环境有自己独立的`.env`文件）使用不同的配置值，提高了代码的复用性和灵活性。
+
+> 注：更多配置信息请参考[官方文档](https://laravelacademy.org/post/9528.html#toc_2)。
+
+---
+
+## 运行
+
+安装好 Laravel 项目，了解了目录结构及其作用，以及如何对项目进行配置后，我们就可以运行这个应用了，启动方式因开发环境而异，我们以 phpStudy 为例，通过配置项目域名为`laravel_blog.test`，在浏览器中访问`http://laravel_blog.test`，即可看到应用首页：![](/assets/laravel_home.png)
+
+---
 
 ## 将项目代码提交到 Github 仓库
 
@@ -122,4 +149,24 @@ git push --set-upstream origin master
 ```
 
 之后会提示输入 Github 的帐号密码，如果没有错误提示，等待代码上传到 Github 仓库即可。
+
+这样，就可以在 Github 上看到刚刚提交的代码了：
+
+![](/assets/QQ截图20190107123946.png)
+
+---
+
+## 测试
+
+Laravel 开箱提供了基于 PHPUnit 进行单元测试和功能测试的功能，并且为我们做好了基础配置（`phpunit.xml`）和示例代码（位于`tests`目录下），由于本节并没有编写任何代码，所以可以通过以下命令运行示例测试：
+
+```
+./vendor/bin/phpunit 
+```
+
+![](/assets/QQ截图20190107124219.png)
+
+---
+
+
 
