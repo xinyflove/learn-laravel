@@ -53,7 +53,7 @@
 * PHP Ctype 扩展
 * PHP JSON 扩展
 
-### Laravel 5.7 
+### Laravel 5.7
 
 * PHP&gt;= 7.1.3
 * PHP OpenSSL 扩展
