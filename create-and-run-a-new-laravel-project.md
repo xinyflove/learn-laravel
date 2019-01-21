@@ -6,7 +6,7 @@
 
 第一种是通过全局的 Laravel 安装器；
 
-另一种是通过 Composer 的`create-project`命令 \[[Composer的安装和使用](javascript:alert%28'筹划中'%29;)\]。
+另一种是通过 Composer 的`create-project`命令 \[\[Composer的安装和使用\]\(javascript:alert%28'筹划中'%29;\)\]。
 
 ### 1.1 使用 Laravel 安装器安装
 
@@ -37,6 +37,8 @@ composer create-project laravel/laravel blog --prefer-dist
 ```bash
 composer create-project laravel/laravel blog56 5.6.* --prefer-dist
 ```
+
+> 注意：如果Composer安装失败，先更新Composer `composer self-update` 试试。
 
 ---
 
