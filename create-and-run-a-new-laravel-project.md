@@ -1,4 +1,4 @@
-假设已经搭建好 Laravel 本地开发环境。
+> 假设已经搭建好 Laravel 本地开发环境。
 
 ## 1. 创建一个新的 Laravel 项目
 
@@ -6,9 +6,9 @@
 
 第一种是通过全局的 Laravel 安装器；
 
-另一种是通过 Composer 的`create-project`命令。
+另一种是通过 Composer 的`create-project`命令 \[\[Composer的安装和使用\]\(javascript:alert%28'筹划中'%29;\)\]。
 
-### 使用 Laravel 安装器安装
+### 1.1 使用 Laravel 安装器安装
 
 安装 Laravel 安装器很简单，在命令行执行以下命令即可（如果已经安装过，会自动进行更新）：
 
@@ -24,7 +24,7 @@ laravel new blog
 
 该命令会在当前目录下创建一个新的名为`blog`的应用。
 
-### 使用 Composer create-project 命令安装
+### 1.2 使用 Composer create-project 命令安装
 
 除此之外，还可以通过 Composer 自带的`create-project`命令来安装新应用：
 
@@ -32,17 +32,19 @@ laravel new blog
 composer create-project laravel/laravel blog --prefer-dist
 ```
 
-效果和上面使用安装器安装的一样，使用这个方式安装的一个好处是可以安装旧版本的 Laravel 项目，比如要安装 5.6 版本的项目`blog56`，可以这么做：
+效果和上面使用安装器安装的一样，使用这个方式安装的一个好处是可以**安装旧版本**的 Laravel 项目，比如要安装 5.6 版本的项目`blog56`，可以这么做：
 
 ```bash
 composer create-project laravel/laravel blog56 5.6.* --prefer-dist
 ```
 
+> 注意：如果Composer安装失败，先更新Composer `composer self-update` 试试。
+
 ---
 
 ## 2. Laravel 应用的目录结构
 
-### 安装完成后，我们来看一下新安装 Laravel 项目`blog`的目录结构：![](/assets/laravel_dir.png)目录
+### 安装完成后，我们来看一下新安装 Laravel 项目`blog`的目录结构：![](/assets/laravel_dir.png)2.1 目录
 
 根目录默认包含一下一级子目录：
 
@@ -60,7 +62,7 @@ app：存放应用核心代码，如模型、控制器、命令、服务等
 
 > 注：更多关于目录结构的信息，可参考[官方文档](https://laravelacademy.org/post/9529.html)。
 
-### 文件
+### 2.2 文件
 
 * `.env.example`/`.env`：用于配置环境变量，`.env.example` 是一个示例模板，而`.env` 是真正的配置文件，由于包含敏感信息，通常也将其放到 `.gitignore` 文件中。
 * `artisan`：允许你在项目根目录下通过 `php artisan` 执行 Artisan 命令
