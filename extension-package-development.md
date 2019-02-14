@@ -22,7 +22,7 @@ composer init
 {
     "name": "peak-xin/package-test",
     "description": "这是一个简单测试开发Laravel扩展包",
-	"license": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Peak Xin",
@@ -190,4 +190,15 @@ Route::get('/', function () {
 ![](/assets/20190213162640.png)
 
 然后点击 Submit 提交按钮，一切顺利，可以看到发布成功。![](/assets/20190213163030.png)
+
+### 3. 设置版本信息
+
+版本默认是`dev-master`，Composer 包的版本号会从 Git 的 tag 中同步过来。
+
+```
+git tag 1.0.0
+git push --tag
+```
+
+扩展包刚发布，此时安装，可能会报找不到安装包的错误，需要稍等一下服务器同步，一般不过超过 3-5 分钟，如果一切正常，会看到版本提示，安装成功！
 
