@@ -1,4 +1,4 @@
-Web路由入口在 `routes/web.php` ，用于处理终端用户通过 Web 浏览器直接访问的请求。
+Web路由入口在 `routes/web.php` ，用于处理终端用户通过 Web 浏览器直接访问的请求。文本主要讲述路由定义、参数传递及路由命名。
 
 ## 定义一个简单的路由
 
@@ -34,13 +34,13 @@ Route::get('/', function () {
 ```
 Route::post('/', function () {}); 
 Route::put('/', function () {});
-Route::delete('/', function () {}); 
+Route::delete('/', function () {});
 ```
 
 此外，还可以通过`Route::any`定义一个可以捕获任何请求方式的路由：
 
 ```
-Route::any('/', function () {}); 
+Route::any('/', function () {});
 ```
 
 从安全角度说，并不推荐上述这种路由定义方式，但是兼顾到便利性，我们可以通过`Route::match`指定请求方式白名单数组，比如下面这个路由可以匹配 GET 或 POST 请求：
